@@ -1,2 +1,6 @@
 # openapi-generator-practice
 OpenAPI Generatorの検証
+
+REST APIのアプリケーションでReactでOpenAPIからのAPIクライアントと型生成でopenapi-typescript, openapi-fetchを使用していたが、手動で作成する範囲が広くて悩ましいと思っていたため、OpenAPI Generatorを試してみる
+
+Tanstack Queryとかを使用するのであれば、Orvalが良さそうだが、Server Components, Server Actionsでも使用することを加味し、HookベースではないAPIクライアントを作ることを想定し、OpenAPI Generatorで検証
