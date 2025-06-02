@@ -14,7 +14,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
     "gen:schema": "cd api-spec && npx tsp compile . && node patch.mjs && cd ..",
     "gen:schema:watch": "SHELL=/usr/bin/sh chokidar 'api-spec/**/*.tsp' -c 'pnpm gen:schema'",
-    "diff:schema:check": "pnpm gen:schema && git add api-spec/tsp-output/schema/openapi.yaml && git diff --staged --quiet || (echo 'tspとyamlの変更が同期されていません' && exit 1)"
+    "diff:schema:check": "pnpm gen:schema && git add api-spec/tsp-output/schema/openapi.yaml && git diff --staged --quiet || (echo 'tspとyamlの変更が同期されていません' && exit 1)",
+    "generate-client": "openapi-generator-cli generate -g typescript-fetch -i ./api-spec/tsp-output/schema/openapi.yaml -o ./apis && pnpm format"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@eslint/js": "^9.26.0",
+    "@openapitools/openapi-generator-cli": "^2.20.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
